@@ -31,3 +31,25 @@ def interview():
     pitches= Pitch.get_all_pitches()
     title = 'Home - Welcome to The best Pitching Website Online'  
     return render_template('interview.html', title = title, pitches= pitches )
+
+@main.route('/pick_up_lines/pitches/')
+def pick_up_line():
+    '''
+    View root page function that returns the index page and its data
+    '''
+    title = 'Pick Up Lines'
+
+    pitches= Pitch.get_all_pitches()
+
+    return render_template('pick_up_lines.html', title = title, pitches= pitches )
+
+@main.route('/promotion/pitches/')
+def promotion():
+    '''
+    View root page function that returns the index page and its data
+    '''
+    title = 'Promotion Pitches'
+
+    pitches= Pitch.get_all_pitches()
+
+    return render_template('promotion.html', title = title, pitches= pitches )
