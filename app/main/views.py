@@ -1,13 +1,33 @@
-from flask import render_template
-from app import app
+from flask import render_template, request, redirect, url_for, abort  
+from . import main  
+from .forms import CommentsForm, UpdateProfile, PitchForm, UpvoteForm
+from ..models import Comment, Pitch, User 
+from flask_login import login_required, current_user
+from .. import db,photos
 
-#Views
-app.route('/')
+import markdown2
+
+
+
+@main.route('/')
 def index():
     '''
     View root page function that returns the index page and its data
     '''
+    title = 'Home - Welcome to The best Pitching Website Online'
 
-    title='Home-Welcome Pitch Site'
-    return render_template('index.html'title=title)
+    search_pitch = request.args.get('pitch_query')
+    pitches= Pitch.get_all_pitches()  
 
+    return render_template('index.html', title = title, pitches= pitches)
+
+#this section consist of the category root functions
+
+@main.route('/inteview/pitches/')
+def interview():
+    '''
+    View root page function that returns the index page and its data
+    '''
+    pitches= Pitch.get_all_pitches()
+    title = 'Home - Welcome to The best Pitching Website Online'  
+    return render_template('interview.html', title = title, pitches= pitches )
