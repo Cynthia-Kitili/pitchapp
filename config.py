@@ -4,7 +4,7 @@ class Config:
     '''
     General configuration parent class
     '''
-    SECRET_KEY = 'TheDifference'
+    SECRET_KEY = 'utility'
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://cynthia:gitz254@localhost/pitch'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     
@@ -20,3 +20,31 @@ class Config:
     # simple mde  configurations
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True
+
+class TestConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://vincent:Empharse333@localhost/pitch_test'
+
+
+class ProdConfig(Config):
+    '''
+    Production  configuration child class
+    Args:
+        Config: The parent configuration class with General configuration settings
+    '''
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    
+class DevConfig(Config):
+    '''
+    Development  configuration child class
+    Args:
+        Config: The parent configuration class with General configuration settings
+    '''
+    
+
+    DEBUG = True
+
+config_options = {
+'development':DevConfig,
+'production':ProdConfig,
+'test':TestConfig
+}    
