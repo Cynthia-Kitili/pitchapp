@@ -4,20 +4,36 @@
 {% block content %}
     
         <div  class="container" id="particles-js">
-                <h2 class="text-center" id="posts">All Pitches</h2>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                </li>
+                {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <button><a class="nav-link" href="{{url_for('main.new_pitch')}}">Type In Your Own Pitch</a></button>
+                </li>
+                {% endif %}
+            </ul>    
+                <h2 class="text-center" style="color:white;"  id="posts">Category Based Pitches</h2>
             <ul class="nav nav-pills nav-justified nav-fill" role="tablist">
                 <li class="nav-item" >
-                    <a id ="cats" class="nav-link" data-toggle="tab" href="#all"><strong>All Pitches</strong> </a>
+                    <a id ="cats" class="nav-link" data-toggle="tab" href="#all"><strong>General Pitches</strong> </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id ="cats" data-toggle="tab" href="#jobs">Job Pitches</a>
+                  <a class="nav-link" id ="cats" data-toggle="tab" href="#jobs">Work Based Pitches</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id ="cats" data-toggle="tab" href="#event">Event Pitches</a>
+                  <a class="nav-link" id ="cats" data-toggle="tab" href="#event">Educational Pitches</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id ="cats"data-toggle="tab" href="#ads">Advert Pitches</a>
+                  <a class="nav-link" id ="cats"data-toggle="tab" href="#ads">Entertainment Pitches</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id ="cats"data-toggle="tab" href="#ads">Health Pitches</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id ="cats"data-toggle="tab" href="#ads">Fun Facts Pitches</a>
+                </li>
+
             </ul>
             <div class="tab-content">
                 <div  class="container tab-pane active" id="all"><br>
