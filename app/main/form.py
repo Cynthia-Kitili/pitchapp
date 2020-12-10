@@ -3,15 +3,15 @@ from wtforms import StringField, SelectField, TextAreaField, SubmitField
 from wtforms.validators import Required
 
 class UpdateProfile(FlaskForm):
-    bio = TextAreaField('Write a brief bio about you.',validators = [Required()])
-    submit = SubmitField('Save')
+    bio = TextAreaField('Type User Bio:',validators = [Required()])
+    submit = SubmitField('Save Bio')
 
 class PitchForm(FlaskForm):
-    title = StringField('Title', validators=[Required()])
-    category = SelectField('Category', choices=[('Events','Events'),('Job','Job'),('Advertisement','Advertisement')],validators=[Required()])
-    post = TextAreaField('Your Pitch', validators=[Required()])
-    submit = SubmitField('Pitch')
+    title = StringField('Title Of Pitch:', validators=[Required()])
+    category = SelectField('Category of Pitch:', choices=[('work','work  '),('educational','educational'),('entertainment','entertainment')],validators=[Required()])
+    post = TextAreaField('Enter Your Pitch:', validators=[Required()])
+    submit = SubmitField('Submit Pitch:')
 
 class CommentForm(FlaskForm):
-    comment = TextAreaField('Leave a comment',validators=[Required()])
-    submit = SubmitField('Comment')
+    comment = TextAreaField('Comment On Pitch:',validators=[Required()])
+    submit = SubmitField('Comment:')
